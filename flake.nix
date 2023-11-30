@@ -1,17 +1,20 @@
 {
-  description = "Kuvi Man nix configs";
+  description = "Frank's nix configs (Ported from Kuvi Man)";
 
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Secrets
-    sops.url = "github:Mic92/sops-nix";
-    nur.url = "github:nix-community/NUR";
+    # sops.url = "github:Mic92/sops-nix";
+    # nur.url = "github:nix-community/NUR";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    #ocaml-overlay.url = "github:nix-ocaml/nix-overlays";
+    #ocaml-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    ttv.url = "github:kuviman/ttv";
 
     # TODO: take a look at this:
     # Shameless plug: looking for a way to nixify your themes and make
@@ -19,7 +22,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, rust-overlay,... }@inputs:
     let
       system = "x86_64-linux";
     in
@@ -33,11 +36,19 @@
               # Pass flake inputs to our config
               specialArgs = { inherit inputs hostname system; };
               # > Our main nixos configuration file <
-              modules = [ ./nixos/configuration.nix ];
+              modules = [ 
+              ./nixos/configuration.nix 
+              ({ pkgs, ... }: {
+                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+              })
+
+              ];
             };
         in
         {
-          mainix = mkOs "mainix";
+          xps = mkOs "xps";
+          #TODO: figure this out 
           swiftix = mkOs "swiftix";
         };
 
@@ -60,8 +71,8 @@
               };
         in
         {
-          "kuviman@mainix" = mkHome "kuviman" "mainix";
-          "kuviman@swiftix" = mkHome "kuviman" "swiftix";
+          "frank@xps" = mkHome "frank" "xps";
+          # make another one 
         };
 
       formatter.${system} = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;

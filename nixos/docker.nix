@@ -2,5 +2,5 @@
 
 {
   virtualisation.docker.enable = true;
-  users.users.kuviman.extraGroups = [ "docker" ];
+  users.users.frank.extraGroups = [ "docker" ];
 }

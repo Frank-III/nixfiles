@@ -2,7 +2,7 @@
 
 {
   programs.adb.enable = true;
-  users.users.kuviman.extraGroups = [ "adbusers" ];
+  users.users.frank.extraGroups = [ "adbusers" ];
   environment.systemPackages = with pkgs; [
     android-udev-rules
     scrcpy

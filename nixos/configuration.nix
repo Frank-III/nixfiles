@@ -2,13 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ system, inputs, lib, config, hostname, ... }:
+{ system, inputs, lib, config, hostname,... }:
 
 {
   imports =
     [
-      inputs.nur.nixosModules.nur
-      inputs.sops.nixosModules.sops
+      # inputs.nur.nixosModules.nur
+      # inputs.sops.nixosModules.sops
       inputs.home-manager.nixosModules.home-manager
       ./hardware/${hostname}.nix
       ./hyperv.nix
@@ -17,16 +17,14 @@
       ./ios.nix
       ./zsh.nix
       ./nvim/configuration.nix
-      ./amdgpu.nix
+      # ./amdgpu.nix
       ./audio.nix
       ./packages.nix
       ./docker.nix
-      ./gitlab/configuration.nix
       ./gnome.nix
       # ./hyprland.nix
       # ./wayfire.nix
       # ./xdg-desktop-portal.nix
-      ./minecraft.nix
     ];
 
   nix = {
@@ -63,6 +61,11 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      #
+      # FIXME: check this 
+      # (import (builtins.fetchTarball {
+      #  url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
+      # }))
 
       # Waybar experimental features
       (self: super: {
@@ -76,7 +79,7 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
       permittedInsecurePackages = [
-        "python-2.7.18.6" # for aseprite
+        # "python-2.7.18.6" # for aseprite
       ];
     };
   };
@@ -84,6 +87,7 @@
   networking.hostName = hostname;
 
   # Bootloader.
+  # TODO: switch to the actually one 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
@@ -121,11 +125,11 @@
   services.xserver.libinput.mouse.accelProfile = "flat";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.kuviman = {
+  users.users.frank = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
   };
-  home-manager.users.kuviman.imports = [ ../home/kuviman.nix ../home/home.nix ];
+  home-manager.users.frank.imports = [ ../home/home.nix ];
 
   users.users.mikky_ti = {
     isNormalUser = true;

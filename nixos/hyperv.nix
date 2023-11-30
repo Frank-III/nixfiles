@@ -9,5 +9,5 @@
 
   services.xserver = { modules = [ pkgs.xorg.xf86videofbdev ]; videoDrivers = [ "hyperv_fb" ]; };
   users.users.gdm = { extraGroups = [ "video" ]; };
-  users.users.kuviman = { extraGroups = [ "video" ]; };
+  users.users.frank = { extraGroups = [ "video" ]; };
 }
