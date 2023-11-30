@@ -134,7 +134,7 @@
     programs.git = {
       enable = true;
       userName = config.home.username;
-      userEmail = (builtins.elemAt (lib.filter (a: a.primary) (builtins.attrValues config.accounts.email.accounts)) 0).address;
+      userEmail = "frankwaang@outlook.com";
       extraConfig = {
         init.defaultBranch = "main";
       };
