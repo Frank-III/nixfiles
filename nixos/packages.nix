@@ -50,6 +50,7 @@
     glances # System monitoring
 
     helix # For when I'm done with neovim
+    neovim
     vscode-fhs
     dua # disk usage analyzer
     any-nix-shell # Keep shell when in nix-shell (nix-shell is outdated tho so I should use smth else?)

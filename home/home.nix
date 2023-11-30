@@ -114,6 +114,10 @@
       ".config/waybar".source = ./waybar;
       ".config/wofi".source = ./wofi;
       ".config/helix".source = ./helix;
+      ".config/nvim" = {
+          source = ./nvim;
+          recursive = true;
+        };
     };
 
     # You can also manage environment variables but you will have to manually

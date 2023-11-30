@@ -11,12 +11,11 @@
       # inputs.sops.nixosModules.sops
       inputs.home-manager.nixosModules.home-manager
       ./hardware/${hostname}.nix
-      ./hyperv.nix
-      ./obs.nix
+      #./hyperv.nix
+      #./obs.nix
       ./android.nix
       ./ios.nix
       ./zsh.nix
-      ./nvim/configuration.nix
       # ./amdgpu.nix
       ./audio.nix
       ./packages.nix
