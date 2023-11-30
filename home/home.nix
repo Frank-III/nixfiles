@@ -193,6 +193,10 @@
       nix-direnv.enable = true;
     };
 
+    progams.starship = {
+      enable = true;
+    }
+
     home.pointerCursor = {
       x11.enable = true;
       gtk.enable = true;
