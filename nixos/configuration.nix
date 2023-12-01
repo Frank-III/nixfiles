@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ system, inputs, lib, config, hostname,... }:
+{ system, inputs, lib, config, hostname, pkgs,... }:
 
 {
   imports =
@@ -101,6 +101,16 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
+  # TODO: not working now, should have access to pkgs
+  i18n.inputMethod = {
+      enable: "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-gtk
+        # fcitx5-qt
+        fcitx5-chinese-addons
+      ];
+    }
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;

@@ -133,6 +133,8 @@
     home.sessionVariables = {
       SHELL = "zsh";
       EDITOR = "nvim";
+      GTK_IM_MODULE="fcitx";
+      QT_IM_MODULE="fcitx";
     };
 
     programs.git = {
