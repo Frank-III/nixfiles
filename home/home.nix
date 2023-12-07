@@ -2,7 +2,7 @@
 { config, lib, pkgs, hostname, ... }:
 
 {
-  imports = [ ];
+  imports = [];
 
   options = {
     email = lib.mkOption {
@@ -18,7 +18,7 @@
     # You should not change this value, even if you update Home Manager. If you do
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
-    home.stateVersion = "22.11"; # Please read the comment before changing.
+    home.stateVersion = "23.11"; # Please read the comment before changing.
 
     accounts.email.accounts = {
       primary = {
@@ -114,6 +114,8 @@
       ".config/waybar".source = ./waybar;
       ".config/wofi".source = ./wofi;
       ".config/helix".source = ./helix;
+      ".config/tmux".source = ./tmux;
+      # FIXME: don't know why this wont work
       ".config/nvim" = {
           source = ./nvim;
           recursive = true;
@@ -165,6 +167,11 @@
         cargo-patched = "cargo --config $HOME/.cargo/patched.toml";
       };
       initExtra = ''
+        if [ -z "$TMUX" ]
+        then
+            tmux attach -t TMUX || tmux new -s TMUX
+        fi
+
         PS1='%(?.%F{green}.%F{red})$%b%f '
       '';
     };

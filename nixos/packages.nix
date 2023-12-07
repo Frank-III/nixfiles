@@ -50,6 +50,7 @@
     glances # System monitoring
 
     helix # For when I'm done with neovim
+    tmux
     neovim
     vscode-fhs
     dua # disk usage analyzer
@@ -62,6 +63,15 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
   ];
+
+  i18n.inputMethod = {
+      enable: "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-gtk
+        # fcitx5-qt
+        fcitx5-chinese-addons
+      ];
+    };
 
   services.upower.enable = true; # checking wireless mouse power for example
 
