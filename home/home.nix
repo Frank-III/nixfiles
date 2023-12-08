@@ -135,8 +135,6 @@
     home.sessionVariables = {
       SHELL = "zsh";
       EDITOR = "nvim";
-      GTK_IM_MODULE="fcitx";
-      QT_IM_MODULE="fcitx";
     };
 
     programs.git = {
@@ -153,28 +151,6 @@
     # Nicely reload system units when changing configs
     systemd.user.startServices = "sd-switch";
 
-    programs.zsh = {
-      enable = true;
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-      enableVteIntegration = true;
-      shellAliases = {
-        nixos = "sudo nixos-rebuild --flake $HOME/nixfiles";
-        l = "eza --long --icons";
-        ls = "eza --icons";
-        lt = "eza --tree --icons";
-        cargo-patched = "cargo --config $HOME/.cargo/patched.toml";
-      };
-      initExtra = ''
-        if [ -z "$TMUX" ]
-        then
-            tmux attach -t TMUX || tmux new -s TMUX
-        fi
-
-        PS1='%(?.%F{green}.%F{red})$%b%f '
-      '';
-    };
 
     programs.alacritty = {
       enable = true;
@@ -206,9 +182,15 @@
       nix-direnv.enable = true;
     };
 
-    progams.starship = {
+    programs.starship = {
       enable = true;
-    }
+    };
+
+    programs.zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+    };
 
     home.pointerCursor = {
       x11.enable = true;
@@ -216,6 +198,29 @@
       package = pkgs.catppuccin-cursors.macchiatoPink;
       name = "Catppuccin-Macchiato-Pink-Cursors";
       size = 32;
+    };
+
+    programs.zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      enableVteIntegration = true;
+      shellAliases = {
+        nixos = "sudo nixos-rebuild --flake $HOME/nixfiles";
+        l = "eza --long --icons";
+        ls = "eza --icons";
+        lt = "eza --tree --icons";
+        cargo-patched = "cargo --config $HOME/.cargo/patched.toml";
+      };
+      initExtra = ''
+        if [ -z "$TMUX" ]
+        then
+            tmux attach -t TMUX || tmux new -s TMUX
+        fi
+
+        PS1='%(?.%F{green}.%F{red})$%b%f '
+      '';
     };
   };
 }

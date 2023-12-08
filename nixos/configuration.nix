@@ -89,9 +89,9 @@
   # TODO: switch to the actually one 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
+  #boot.loader.efi.efiSysMountPoint = "/boot";
 
-  time.hardwareClockInLocalTime = true; # For dual booting Windows
+  #time.hardwareClockInLocalTime = true; # For dual booting Windows
 
   # Enable networking
   networking.networkmanager.enable = true;
