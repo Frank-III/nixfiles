@@ -42,6 +42,11 @@
       auto-optimise-store = true;
     };
 
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
     # For nix-direnv
     extraOptions = ''
       keep-outputs = true
@@ -97,7 +102,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Saratov";
+  time.timeZone = "America/Chicago";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

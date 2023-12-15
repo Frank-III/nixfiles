@@ -40,7 +40,7 @@
     ntfs3g # to break windows from linux YEP
     libguestfs-with-appliance # to mount hyper-v vm data
     file
-
+    gcc
     age # encryption
     yt-dlp # download YouTube
 
@@ -55,9 +55,14 @@
     vscode-fhs
     dua # disk usage analyzer
     any-nix-shell # Keep shell when in nix-shell (nix-shell is outdated tho so I should use smth else?)
-
-
+    fd
     audacity # for fish sound effects
+
+    zoxide
+    just
+    yazi
+    #front end
+    bun
   ];
 
   fonts.packages = with pkgs; [

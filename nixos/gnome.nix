@@ -14,10 +14,10 @@
         vitals
         eye-extended
         burn-my-windows
-        activate_gnome
         pop-shell
         workspace-matrix
         forge
+        kimpanel
       ];
     in
     extensions ++ [ gnome.gnome-tweaks ];

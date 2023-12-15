@@ -207,7 +207,7 @@
       syntaxHighlighting.enable = true;
       enableVteIntegration = true;
       shellAliases = {
-        nixos = "sudo nixos-rebuild --flake $HOME/nixfiles";
+        nixos = "sudo nixos-rebuild --flake $HOME/Documents/nixfiles";
         l = "eza --long --icons";
         ls = "eza --icons";
         lt = "eza --tree --icons";

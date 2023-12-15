@@ -7,7 +7,6 @@
     # Secrets
     # sops.url = "github:Mic92/sops-nix";
     # nur.url = "github:nix-community/NUR";
-    rust-overlay.url = "github:oxalica/rust-overlay";
     #ocaml-overlay.url = "github:nix-ocaml/nix-overlays";
     #ocaml-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -22,7 +21,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, rust-overlay,... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
     in
@@ -38,11 +37,6 @@
               # > Our main nixos configuration file <
               modules = [ 
               ./nixos/configuration.nix 
-              ({ pkgs, ... }: {
-                nixpkgs.overlays = [ rust-overlay.overlays.default ];
-                environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
-              })
-
               ];
             };
         in
