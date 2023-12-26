@@ -61,12 +61,18 @@
     zoxide
     just
     yazi
+    jq
     #front end
     bun
+    clash-verge
+
   ];
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+
+    source-han-sans
+    lxgw-wenkai
   ];
 
   i18n.inputMethod = {

@@ -115,7 +115,6 @@
       ".config/wofi".source = ./wofi;
       ".config/helix".source = ./helix;
       ".config/tmux".source = ./tmux;
-      # FIXME: don't know why this wont work
       ".config/nvim" = {
           source = ./nvim;
           recursive = true;
@@ -199,6 +198,7 @@
       name = "Catppuccin-Macchiato-Pink-Cursors";
       size = 32;
     };
+
 
     programs.zsh = {
       enable = true;
