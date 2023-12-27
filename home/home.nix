@@ -222,5 +222,12 @@
         PS1='%(?.%F{green}.%F{red})$%b%f '
       '';
     };
+
+    programs.tmux = {
+      enable = false;      
+      configFile.source = ./nushell/config.nu;
+      extraConfig = ''
+      '';
+    }
   };
 }
